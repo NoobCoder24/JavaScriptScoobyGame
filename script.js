@@ -1,12 +1,12 @@
 score = 0;                                                      /*Initialize score at start*/
 cross= true;
 
-audiojump = new Audio('jump_super.wav');                            //on jump key down press sound
-audiogo = new Audio('gameover.wav');                                 //game over sound   
-audio = new Audio('techno.mp3');                                    //intro playing sounds
+audiojump = new Audio('jump-super.wav');                            //on jump key down press sound
+audiogo = new Audio('mariodie.wav');                                 //game over sound   
+audio = new Audio('ThemeSong.mp3');                                    //intro playing sounds
 setTimeout(() => {
     audio.play()
-}, 1000);
+}, 100);
 document.onkeydown=function(e){                                 /*When down key is pressed*/
     console.log("Key code is:",e.keyCode)
     if(e.keyCode==40){                                  
@@ -15,7 +15,7 @@ document.onkeydown=function(e){                                 /*When down key 
         audiojump.play();
         setTimeout(()=>{
             scoob.classList.remove('animateScoob')
-        },700);
+        },800);
     }
     if(e.keyCode==39){
         scoob = document.querySelector('.scoob');
@@ -55,11 +55,12 @@ setInterval(()=>{
     {
        gameOver.innerHTML = 'Game Over !!';
         obstacle.classList.remove('obstaclepp')
-        audiogo.play();                                             //on game over sound
+       // audiogo.play();                                             //on game over sound
         setTimeout(() => {
-            audiogo.pause();
+            audiogo.play();
             audio.pause();
-        }, 1000);
+            
+        }, 100);
     }
     else if(offsetX< 145 && cross ){
         score+= 1;
